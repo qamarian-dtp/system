@@ -59,7 +59,13 @@ func (someSystem *System) InitOrder () ([]string, error, string) { /* This funct
 		that occured.
 
 	outpt 2: When the value of outpt 1 is an error, value of this data would be a more precise
-		description of the error.*/
+		description of the error. Possible values look like the following:
+
+		"Dependency 'x' is missing" - Value of outpt 2 when the dependency of an element
+			is not in the system.
+
+		"Element 'r' is part of the circle"- Value of outpt 2 when a cyclic
+			dependency is detected. */
 
 	// Declaration of some data to be used for this operation. { ...
 	elements := someSystem.systemElements
