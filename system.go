@@ -76,6 +76,10 @@ func (someSystem *System) InitOrder () ([]string, error, string) { /* This funct
 	/* The elements of this system are popped one-by-one, and added in an appropriate place, in
 		the "init order" that is being generated. */
 	for {
+		if len (elements) == 0 {
+			break
+		}
+
 		elementUnderProcessing := elements [0]
 		var errX error = nil
 		var errDescp string
@@ -84,9 +88,6 @@ func (someSystem *System) InitOrder () ([]string, error, string) { /* This funct
 				element to the "init order" */
 		if errX != nil {
 			return nil, errX, errDescp
-		}
-		if len (elements) == 0 {
-			break
 		}
 	}
 
@@ -113,7 +114,7 @@ func addToInitOrder (initOrder []string, element string, waitingList []string,
 		data would be nil.
 	outpt 1: If this operation succeeds, value of this data would be nil error. If this operation
 		should fail, value of this data would be an error.
-	ouptt 2: If this operation succeeds, value of this data would be an empty string. If this
+	outpt 2: If this operation succeeds, value of this data would be an empty string. If this
 		operation should fail, value of this data would be a more precise description of the
 		error. */
 
